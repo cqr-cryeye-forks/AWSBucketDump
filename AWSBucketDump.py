@@ -200,16 +200,16 @@ def main():
             grep_content = grep_file.readlines()
         grep_list = [g.strip() for g in grep_content]
 
-    if arguments.download and arguments.savedir:
-        print("Downloads enabled (-D), save directories (-d) for each host will be created/used.")
-    elif arguments.download and not arguments.savedir:
-        print("Downloads enabled (-D), will be saved to current directory.")
-    else:
-        print("Downloads were not enabled (-D), not saving results locally.")
+#     if arguments.download and arguments.savedir:
+#         print("Downloads enabled (-D), save directories (-d) for each host will be created/used.")
+#     elif arguments.download and not arguments.savedir:
+#         print("Downloads enabled (-D), will be saved to current directory.")
+#     else:
+#         print("Downloads were not enabled (-D), not saving results locally.")
 
     # start up bucket workers
     for _ in range(0, arguments.threads):
-        print('Starting thread...')
+#         print('Starting thread...')
         t = Thread(target=bucket_worker)
         t.daemon = True
         t.start()
@@ -230,7 +230,7 @@ def main():
     if arguments.download:
         download_q.join()
 
-    cleanUp()
+#     cleanUp()
 
 if __name__ == "__main__":
     main()
